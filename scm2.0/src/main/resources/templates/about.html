@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="en" th:replace="~{base::parent(~{:: #content})}">
+<html lang="en" th:replace="~{base::parent(~{:: #content},~{::title},~{::script})}">
 <head>
+    <title>About SCM</title>
 </head>
 <body>
 <div id="content">
@@ -8,5 +9,8 @@
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores assumenda atque explicabo hic optio provident quisquam, ratione reiciendis vel.</p>
 
 </div>
+<script>
+    console.log("about page");
+</script>
 </body>
 </html>
