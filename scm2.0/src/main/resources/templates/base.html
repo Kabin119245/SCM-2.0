@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="parent(x,y)">
+   <h1>This is parent fragment</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, nostrum.</p>
+    <h1> Value of x is <span th:text="${x}"></span></h1>
+    <h1> Value of y is <span th:text="${y}"></span></h1>
+</div>
+</body>
+</html>
