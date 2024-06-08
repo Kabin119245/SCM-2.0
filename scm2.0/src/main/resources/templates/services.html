@@ -6,6 +6,8 @@
 </head>
 <body>
 <h1>This is Services Page</h1>
-<p>hello</p>
+<hr>
+<!--Using Fragment-->
+<div th:replace ="~{base :: parent('services one', 'services two')}"></div>
 </body>
 </html>
