@@ -12,21 +12,21 @@ th:fragment="parent(content,title,script)"
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
-<!--common header-->
 
-<ul class="p-4">
-    <li><a data-th-href="@{'/home'}" >Home</a></li>
-    <li><a data-th-href="@{'/services'}" >Services</a></li>
-    <li><a data-th-href="@{'/about'}" >About</a></li>
-</ul>
 
 <!--main page content-->
+<!--common header-->
+<div th:insert="~{navbar :: navbar}">
+
+</div>
+
+
 
 <div class="p-4"><section th:replace="${content}"></section></div>
 
 <!--common footer-->
 
-<footer class="p-4">THis is a common footer</footer>
+<footer class="p-4" >THis is a common footer</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <th:block th:replace="${script}"></th:block>
 </body>
