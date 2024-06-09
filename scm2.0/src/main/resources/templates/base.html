@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"
+<html class="light" lang="en"
 th:fragment="parent(content,title,script)"
       xmlns:th="http://www.thymeleaf.org" >
 <head>
@@ -11,17 +11,12 @@ th:fragment="parent(content,title,script)"
     <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
-<body>
+<body class="dark:bg-gray-900 dark:text-white">
 
-
-<!--main page content-->
 <!--common header-->
-<div th:insert="~{navbar :: navbar}">
+<div th:insert="~{navbar :: navbar}"> </div>
 
-</div>
-
-
-
+    <!--main page content-->
 <div class="p-4"><section th:replace="${content}"></section></div>
 
 <!--common footer-->
