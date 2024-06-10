@@ -1,11 +1,11 @@
 package com.scm.entities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "user")
 @Table(name = "users")
@@ -28,7 +28,6 @@ public class User {
     private String profilePic;
     private String phoneNumber;
 
-
     //information
     private boolean enabled = false;
     private boolean emailVerified = false;
@@ -37,6 +36,15 @@ public class User {
     //self, google, facebook,linkedin
     private Providers provider=Providers.SELF;
     private String providerUserId;
+
+
+    //add more fields if needed
+
+    //one-to-many relation to Contact class(one person has many contacts)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<Contact> contacts = new ArrayList<>();
+
+
 
 
 }
