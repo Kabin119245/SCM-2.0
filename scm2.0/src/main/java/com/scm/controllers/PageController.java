@@ -1,6 +1,9 @@
 package com.scm.controllers;
 
+import com.scm.entities.User;
 import com.scm.forms.UserForm;
+import com.scm.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PageController {
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/home")
     public String home(Model model) {
@@ -68,8 +74,19 @@ public class PageController {
         //TODO:
 
 
-        //we have to save the data to database
+        //we have to save the data to database\
+        // converted UserForm --> User
+        User user = User.builder()
+                .name(userForm.getName())
+                .email(userForm.getEmail())
+                .password(userForm.getPassword())
+                .phoneNumber(userForm.getPhoneNumber())
+                .about(userForm.getAbout())
+                .profilePic("https://scontent.fktm17-1.fna.fbcdn.net/v/t39.30808-6/336674179_123851850670957_110306264273351523_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xPI5rnFGKHgQ7kNvgHgYhLh&_nc_ht=scontent.fktm17-1.fna&oh=00_AYDRlhEcNxq3TSuoFV57f19O_YHXv2i9WYbw6AldrzDwrA&oe=666E43C0")
+                .build();
 
+        User savedUser = userService.saveUser(user);
+        System.out.println("User saved");
 
 
         // message = "Registration Successfully"

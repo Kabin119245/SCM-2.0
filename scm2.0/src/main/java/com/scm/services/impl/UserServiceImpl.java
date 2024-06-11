@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,7 +23,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
-        return userRepo.save(user);    }
+        //user id have to generate
+        String userId = UUID.randomUUID().toString();
+        user.setUserId(userId);
+        return userRepo.save(user);
+    }
 
     @Override
     public Optional<User> getUserById(String id) {
@@ -31,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByEmail(String email) {
-        return userRepo.findById(id);
+       // return userRepo.findById(email);
         return null;
     }
 
@@ -64,16 +69,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isUserExist(String id) {
-        return false;
+        User user2 = userRepo.findById(id).orElseThrow(null);
+        return user2 != null ? true : false;
     }
 
     @Override
     public boolean isUserExistByEmail(String email) {
-        return false;
+        User user2 = userRepo.findById(email).orElseThrow(null);
+        return user2 != null ? true : false;
     }
 
     @Override
     public List<User> getAllUsers() {
-        return List.of();
+        return userRepo.findAll();
     }
 }
