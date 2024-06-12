@@ -76,14 +76,25 @@ public class PageController {
 
         //we have to save the data to database\
         // converted UserForm --> User
-        User user = User.builder()
-                .name(userForm.getName())
-                .email(userForm.getEmail())
-                .password(userForm.getPassword())
-                .phoneNumber(userForm.getPhoneNumber())
-                .about(userForm.getAbout())
-                .profilePic("https://scontent.fktm17-1.fna.fbcdn.net/v/t39.30808-6/336674179_123851850670957_110306264273351523_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xPI5rnFGKHgQ7kNvgHgYhLh&_nc_ht=scontent.fktm17-1.fna&oh=00_AYDRlhEcNxq3TSuoFV57f19O_YHXv2i9WYbw6AldrzDwrA&oe=666E43C0")
-                .build();
+//        User user = User.builder()
+//                .name(userForm.getName())
+//                .email(userForm.getEmail())
+//                .password(userForm.getPassword())
+//                .phoneNumber(userForm.getPhoneNumber())
+//                .about(userForm.getAbout())
+//                .profilePic("https://scontent.fktm17-1.fna.fbcdn.net/v/t39.30808-6/336674179_123851850670957_110306264273351523_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xPI5rnFGKHgQ7kNvgHgYhLh&_nc_ht=scontent.fktm17-1.fna&oh=00_AYDRlhEcNxq3TSuoFV57f19O_YHXv2i9WYbw6AldrzDwrA&oe=666E43C0")
+//                .build();
+
+//        build is removed beacuse it was not showing default values
+        User user = new User();
+        user.setName(userForm.getName());
+        user.setEmail(userForm.getEmail());
+        user.setPassword(userForm.getPassword());
+        user.setPhoneNumber(userForm.getPhoneNumber());
+        user.setAbout(userForm.getAbout());
+        user.setProfilePic("https://scontent.fktm17-1.fna.fbcdn.net/v/t39.30808-6/336674179_123851850670957_110306264273351523_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xPI5rnFGKHgQ7kNvgHgYhLh&_nc_ht=scontent.fktm17-1.fna&oh=00_AYDRlhEcNxq3TSuoFV57f19O_YHXv2i9WYbw6AldrzDwrA&oe=666E43C0");
+
+
 
         User savedUser = userService.saveUser(user);
         System.out.println("User saved");
