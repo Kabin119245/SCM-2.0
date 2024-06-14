@@ -19,31 +19,56 @@
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">SignUp Here</h5>
             <p class="font-normal text-gray-700 dark:text-gray-400">Start Managing your contacts on Cloud...</p>
 <!--            This is form-->
-            <form data-th-action="@{'/doRegister'}" method="post" data-th-object="${userForm}" class="mt-4">
+            <form th:action="@{'/doRegister'}" method="post" th:object="${userForm}" class="mt-4" novalidate>
 <!--                name-->
                 <div class="mb-5">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                    <input type="text" data-th-field="*{name}" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter name here" required />
+                    <input type="text" th:field="*{name}" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter name here" required />
+                    <p
+                            data-th-if="${#fields.hasErrors('name')}"
+                            data-th-errors="*{name}"
+                            class="text-red-600 text-sm font-medium px-1 py-2"
+                    ></p>
                 </div>
 <!--                email-->
                 <div class="mb-5">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                    <input type="email" data-th-field="*{email}" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+                    <input type="email" th:field="*{email}" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@example.com" required />
+                    <p
+                            data-th-if="${#fields.hasErrors('email')}"
+                            data-th-errors="*{email}"
+                            class="text-red-600 text-sm font-medium px-1 py-2"
+                    ></p>
                 </div>
 <!--                password-->
                 <div class="mb-5">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
-                    <input type="password" data-th-field="*{password}" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                    <input type="password" th:field="*{password}" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                    <p
+                            data-th-if="${#fields.hasErrors('password')}"
+                            data-th-errors="*{password}"
+                            class="text-red-600 text-sm font-medium px-1 py-2"
+                    ></p>
                 </div>
 <!--                phonenumber-->
                 <div class="mb-5">
                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Number</label>
-                    <input type="text" id="phone" data-th-field="*{phoneNumber}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                    <input type="text" id="phone" th:field="*{phoneNumber}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                    <p
+                            data-th-if="${#fields.hasErrors('phoneNumber')}"
+                            data-th-errors="*{phoneNumber}"
+                            class="text-red-600 text-sm font-medium px-1 py-2"
+                    ></p>
                 </div>
 <!--                about text area-->
                 <div class="mb-5">
                     <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">About Yourself</label>
-                    <textarea id="about" data-th-field="*{about}" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write something about yourself here..."></textarea>
+                    <textarea id="about" th:field="*{about}" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write something about yourself here..."></textarea>
+                    <p
+                            data-th-if="${#fields.hasErrors('about')}"
+                            data-th-errors="*{about}"
+                            class="text-red-600 text-sm font-medium px-1 py-2"
+                    ></p>
                 </div>
             <!--buttons-->
                 <div class="mb-3 flex justify-center space-x-3">

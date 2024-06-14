@@ -7,19 +7,19 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Component
 public class SessionHelper {
+
     public static void removeMessage() {
         try {
-            HttpSession session = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest().getSession();
+            System.out.println("removing message from session");
+            HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest()
+                    .getSession();
             session.removeAttribute("message");
-        }
-        catch (Exception e) {
-            System.out.println("Message could not be removed");
+        } catch (Exception e) {
+            System.out.println("Error in SessionHelper: " + e);
+            ;
             e.printStackTrace();
         }
 
-
-
-
-
     }
+
 }
