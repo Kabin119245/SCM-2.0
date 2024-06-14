@@ -2,7 +2,10 @@ package com.scm.controllers;
 
 import com.scm.entities.User;
 import com.scm.forms.UserForm;
+import com.scm.helpers.Message;
+import com.scm.helpers.MessageType;
 import com.scm.services.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,7 +69,7 @@ public class PageController {
     //processing register or sign up
 
     @RequestMapping(value = "/doRegister", method = RequestMethod.POST)
-    public String processRegister(@ModelAttribute UserForm userForm) {
+    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session) {
         //we have to fetch the form data
         System.out.println(userForm);
 
@@ -102,11 +105,15 @@ public class PageController {
 
         // message = "Registration Successfully"
 
+        //add the message
+
+        Message message = Message.builder().content("Registration Successful").type(MessageType.red).build();
+        session.setAttribute("message", message);
 
 
 
         //we have to redirect to the login page
-        return "redirect:/login";
+        return "redirect:/register";
 
     }
 
