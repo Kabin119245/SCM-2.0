@@ -18,7 +18,7 @@
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Login Here</h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">Start Managing your contacts on Cloud...</p>
                 <!--            This is form-->
-                <form th:action="@{'/authentication'}" method="post" th:object="${userForm}" class="mt-4" novalidate>
+                <form th:action="@{'/authenticate'}" method="post" th:object="${userForm}" class="mt-4" novalidate>
                     <!-- username filed email-->
                     <div class="mb-5">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
