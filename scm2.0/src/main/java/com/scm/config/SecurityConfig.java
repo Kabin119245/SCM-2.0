@@ -43,6 +43,9 @@ public class SecurityConfig {
     @Autowired
     private SecurityCustomUserDetailService userDetailService;
 
+    @Autowired
+    private OAuthAuthenticationSuccessHandler handler;
+
     //configuration of authentication provider
 
 
@@ -92,7 +95,7 @@ public class SecurityConfig {
         //oauth configuration
         httpSecurity.oauth2Login(oauth -> {
             oauth.loginPage("/login");
-            oauth.successHandler(null);
+            oauth.successHandler(handler);
         });
 
         return httpSecurity.build();
