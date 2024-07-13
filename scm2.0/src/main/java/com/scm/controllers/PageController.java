@@ -56,13 +56,13 @@ public class PageController {
         System.out.println("Contact Page loading");
         return "contact";
     }
-    //login
+    //login controller
     @RequestMapping(value = "/login")
     public String loginPage() {
         System.out.println("Login Page loading");
         return "login";
     }
-    //register
+    //register controller
     @RequestMapping(value = "/register")
     public String registerPage(Model model) {
         System.out.println("Register Page loading");
